@@ -9,8 +9,6 @@ function blockColor() {
     $(".time-block").each(function() {
         var currentHour = parseInt($(this).attr("id"));
 
-        console.log(this);
-
 
         if (currentHour > hour) {
             $(this).addClass("future");
@@ -24,9 +22,8 @@ function blockColor() {
 
 saveBtn.on("click", function() {
 
-    console.log(this);
-    var time = $(this).siblings("hour").text();
-    var notes = $(this).siblings("notes").val();
+    var time = $(this).siblings(".hour").text();
+    var notes = $(this).siblings(".notes").val();
 
    localStorage.setItem(time, notes);
 
@@ -36,9 +33,7 @@ function run() {
     $(".hour").each(function() {
         var currentHour = $(this).text();
         var currentNotes = localStorage.getItem(currentHour);
-
-        console.log(this);
-        console.log(currentHour);
+        
 
         if (currentNotes !== null) {
             $(this).siblings(".notes").val(currentNotes);
